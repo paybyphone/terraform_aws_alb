@@ -17,7 +17,7 @@ resource "aws_alb_listener" "alb_listener" {
   load_balancer_arn = "${aws_alb.alb.arn}"
   port              = "${var.listener_port}"
   protocol          = "${var.listener_protocol}"
-  ssl_policy        = "${lookup(map("HTTP", ""), var.listener_protocol, "ELBSecurityPolicy-2015-05")}"
+  ssl_policy        = "${var.listener_ssl_policy != "" ? var.listener_ssl_policy : lookup(map("HTTP", ""), var.listener_protocol, "ELBSecurityPolicy-2015-05")}"
   certificate_arn   = "${var.listener_certificate_arn}"
 
   default_action = {

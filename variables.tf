@@ -44,6 +44,11 @@ variable "listener_certificate_arn" {
   default = ""
 }
 
+variable "listener_ssl_policy" {
+  type = "string"
+  default = ""
+}
+
 // The port that the default target group will pass requests to.
 variable "default_target_group_port" {
   type    = "string"
